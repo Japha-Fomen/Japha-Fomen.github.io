@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rhodian Japha Fomen</title>
+<meta name="description" content="Java and Spring Boot developer. Backend services, automated testing, containerized deployment.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16201f;
+    --muted: #5c6664;
+    --accent: #17696B;
+    --line: #e2e7e6;
+    --card: #f7faf9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1413;
+      --fg: #e8ecea;
+      --muted: #9aa5a3;
+      --accent: #63c0c2;
+      --line: #263130;
+      --card: #161d1c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 56px 16px 72px;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+
+  h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -.5px; }
+  .role { color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+  .links { font-size: .95rem; margin: 0 0 6px; }
+  .links a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  .links a:hover { border-bottom-color: var(--accent); }
+  .links span { color: var(--line); padding: 0 8px; }
+
+  h2 {
+    font-size: .8rem; text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--accent); margin: 44px 0 14px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  p { margin: 0 0 14px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 18px 20px; margin-bottom: 14px;
+  }
+  .card h3 { margin: 0 0 4px; font-size: 1.05rem; }
+  .stack { color: var(--accent); font-size: .85rem; font-weight: 600; margin: 0 0 10px; }
+  .card p { margin: 0 0 12px; font-size: .96rem; }
+  .card .links { margin: 0; font-size: .9rem; }
+
+  .skills { font-size: .95rem; }
+  .skills div { margin-bottom: 6px; }
+  .skills b { color: var(--fg); }
+
+  .note {
+    font-size: .88rem; color: var(--muted); font-style: italic;
+  }
+  footer {
+    margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
+    font-size: .9rem; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Rhodian Japha Fomen</h1>
+  <p class="role">Java and Spring Boot developer</p>
+  <p class="links">
+    <a href="mailto:japhafomen@gmail.com">japhafomen@gmail.com</a>
+    <span>|</span>
+    <a href="https://github.com/Japha-Fomen">GitHub</a>
+    <span>|</span>
+    Gatineau, Quebec, Canada
+  </p>
+
+  <h2>About</h2>
+  <p>I build backend services in Java and Spring Boot. My most recent one is a library management API that I wrote alone, from the data model to the deployment. It is covered by 47 automated tests, built and tested by a pipeline on every push, packaged in a Docker image, and running online right now. The code, the documentation and the list of what it does not do yet are all public.</p>
+  <p>Before computer science I took a degree in physics. It left me with a habit that still serves me: look for the cause instead of working around the symptom.</p>
+  <p>I graduated from the Université du Québec en Outaouais in January 2025. I am looking for my first developer role, in French or in English.</p>
+
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>biblio1-api</h3>
+    <p class="stack">Java 21 · Spring Boot 4 · Spring Data JPA · Docker · GitHub Actions</p>
+    <p>A layered REST service for managing a library: books, authors, members and loans. Paginated and sortable collections, criteria-based search, per-operation DTOs, validation on every input, and a global exception handler that turns business errors into accurate status codes with a JSON body naming each invalid field. Three configuration profiles, a health endpoint, and a multi-stage Docker build.</p>
+    <p class="links">
+      <a href="https://biblio1-api.onrender.com">Live service</a>
+      <span>|</span>
+      <a href="https://github.com/Japha-Fomen/biblio1-api">Source code</a>
+      <span>|</span>
+      <a href="https://github.com/Japha-Fomen/biblio1-api#readme">Documentation</a>
+    </p>
+    <p class="note">Free hosting: the first call wakes the instance and takes about a minute. The database is in memory and starts empty after each restart.</p>
+  </div>
+
+  <div class="card">
+    <h3>Academic management application</h3>
+    <p class="stack">Java · JavaFX · JDBC · MySQL</p>
+    <p>A desktop application built alone on MySQL: twenty-seven classes across five packages, with a data access layer, a service layer, and an interface that changes according to the role of the user. Prepared statements and credentials kept out of the code.</p>
+    <p class="links"><a href="https://github.com/Japha-Fomen">Source code</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Station-Api</h3>
+    <p class="stack">Java · Algorithms · Data structures</p>
+    <p>A weighted graph with Dijkstra shortest-path search over a priority queue, from the graph model to the interface that draws the computed route. About a thousand lines, written alone.</p>
+    <p class="links"><a href="https://github.com/Japha-Fomen">Source code</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Network and Active Directory labs</h3>
+    <p class="stack">Cisco IOS · Windows Server · Hyper-V</p>
+    <p>Five Cisco labs built and documented on my own: static and dynamic routing, VLAN segmentation, HSRP redundancy, a firewall with NAT and access control lists. Alongside them, a Windows Server domain controller with organizational units, accounts, group policies, DNS and DHCP, verified from client workstations.</p>
+    <p class="links"><a href="https://github.com/Japha-Fomen">Topologies and configurations</a></p>
+  </div>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><b>Languages</b> Java 21, C, C++, SQL, Bash, JavaScript, VB.NET, Python (basic)</div>
+    <div><b>Backend</b> Spring Boot, Spring Web MVC, Spring Data JPA, Hibernate, Bean Validation, MapStruct, Maven, REST API design</div>
+    <div><b>Databases</b> MySQL, T-SQL, SQLite, H2, relational modelling, derived and custom queries</div>
+    <div><b>Testing</b> JUnit 5, automated API testing with Postman, test scenario design</div>
+    <div><b>Delivery</b> Git, GitHub, GitHub Actions, Docker, Linux, configuration profiles per environment</div>
+    <div><b>Embedded</b> FreeRTOS, CMSIS-RTOS2, ARM Cortex-M, concurrent task design, I2C</div>
+    <div><b>Networking</b> TCP/IP, VLAN, routing, Cisco IOS, Wireshark, Windows Server and Active Directory</div>
+  </div>
+
+  <h2>Education</h2>
+  <p><b>Bachelor of Applied Science, Computer Science.</b> Université du Québec en Outaouais, January 2022 to January 2025.<br>
+  <b>Bachelor's degree in Physics, Mechanics.</b> Université de Yaoundé I, Cameroon, 2018 to 2021.</p>
+
+  <footer>
+    Written and maintained by Rhodian Japha Fomen. Bilingual, French and English.
+  </footer>
+
+</main>
+</body>
+</html>
