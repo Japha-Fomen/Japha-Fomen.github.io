@@ -27,19 +27,38 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    padding: 56px 16px 72px;
+    padding: 24px 16px 72px;
     background: var(--bg);
     color: var(--fg);
     font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   main { max-width: 720px; margin: 0 auto; }
 
+  /* Bascule de langue : on masque la langue inactive. */
+  body[data-lang="en"] .fr { display: none; }
+  body[data-lang="fr"] .en { display: none; }
+
+  .topbar { display: flex; justify-content: flex-end; margin-bottom: 28px; }
+  #lang-toggle {
+    background: none;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font: inherit;
+    font-size: .88rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #lang-toggle:hover { background: var(--accent); color: var(--bg); }
+  #lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
   h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -.5px; }
   .role { color: var(--accent); font-weight: 600; margin: 0 0 10px; }
   .links { font-size: .95rem; margin: 0 0 6px; }
   .links a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
   .links a:hover { border-bottom-color: var(--accent); }
-  .links span { color: var(--line); padding: 0 8px; }
+  .links .sep { color: var(--line); padding: 0 8px; }
 
   h2 {
     font-size: .8rem; text-transform: uppercase; letter-spacing: 1.4px;
@@ -61,89 +80,135 @@
   .skills div { margin-bottom: 6px; }
   .skills b { color: var(--fg); }
 
-  .note {
-    font-size: .88rem; color: var(--muted); font-style: italic;
-  }
+  .note { font-size: .88rem; color: var(--muted); font-style: italic; }
+
   footer {
     margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
     font-size: .9rem; color: var(--muted);
   }
 </style>
 </head>
-<body>
+<body data-lang="en">
 <main>
 
+  <div class="topbar">
+    <button id="lang-toggle" type="button">
+      <span class="en">Français</span><span class="fr">English</span>
+    </button>
+  </div>
+
   <h1>Rhodian Japha Fomen</h1>
-  <p class="role">Java and Spring Boot developer</p>
+  <p class="role"><span class="en">Java and Spring Boot developer</span><span class="fr">Développeur Java et Spring Boot</span></p>
   <p class="links">
     <a href="mailto:japhafomen@gmail.com">japhafomen@gmail.com</a>
-    <span>|</span>
-    <a href="https://github.com/Japha-Fomen">GitHub</a>
-    <span>|</span>
-    Gatineau, Quebec, Canada
+    <span class="sep">|</span>
+    <a href="https://github.com/Japha-Fomen" target="_blank" rel="noopener">GitHub</a>
+    <span class="sep">|</span>
+    <span class="en">Gatineau, Quebec, Canada</span><span class="fr">Gatineau (Québec), Canada</span>
   </p>
 
-  <h2>About</h2>
-  <p>I build backend services in Java and Spring Boot. My most recent one is a library management API that I wrote alone, from the data model to the deployment. It is covered by 47 automated tests, built and tested by a pipeline on every push, packaged in a Docker image, and running online right now. The code, the documentation and the list of what it does not do yet are all public.</p>
-  <p>Before computer science I took a degree in physics. It left me with a habit that still serves me: look for the cause instead of working around the symptom.</p>
-  <p>I graduated from the Université du Québec en Outaouais in January 2025. I am looking for my first developer role, in French or in English.</p>
+  <h2><span class="en">About</span><span class="fr">À propos</span></h2>
 
-  <h2>Projects</h2>
+  <p class="en">I build backend services in Java and Spring Boot. My most recent one is a library management API that I wrote alone, from the data model to the deployment. It is covered by 47 automated tests, built and tested by a pipeline on every push, packaged in a Docker image, and running online right now. The code, the documentation and the list of what it does not do yet are all public.</p>
+  <p class="fr">Je développe des services dorsaux en Java et en Spring Boot. Le dernier en date est une API de gestion de bibliothèque que j’ai écrite seul, du modèle de données jusqu’à la mise en ligne. Elle est couverte par 47 tests automatisés, construite et testée par un pipeline à chaque poussée, empaquetée dans une image Docker, et en ligne en ce moment même. Le code, la documentation et la liste de ce qu’elle ne fait pas encore sont publics.</p>
+
+  <p class="en">Before computer science I took a degree in physics. It left me with a habit that still serves me: look for the cause instead of working around the symptom.</p>
+  <p class="fr">Avant l’informatique, j’ai fait une licence en physique. Il m’en reste une habitude qui me sert encore&nbsp;: chercher la cause plutôt que contourner le symptôme.</p>
+
+  <p class="en">I graduated from the Université du Québec en Outaouais in January 2025. I am looking for my first developer role, in French or in English.</p>
+  <p class="fr">J’ai obtenu mon baccalauréat à l’Université du Québec en Outaouais en janvier 2025. Je cherche mon premier poste de développeur, en français comme en anglais.</p>
+
+  <h2><span class="en">Projects</span><span class="fr">Projets</span></h2>
 
   <div class="card">
     <h3>biblio1-api</h3>
     <p class="stack">Java 21 · Spring Boot 4 · Spring Data JPA · Docker · GitHub Actions</p>
-    <p>A layered REST service for managing a library: books, authors, members and loans. Paginated and sortable collections, criteria-based search, per-operation DTOs, validation on every input, and a global exception handler that turns business errors into accurate status codes with a JSON body naming each invalid field. Three configuration profiles, a health endpoint, and a multi-stage Docker build.</p>
+    <p class="en">A layered REST service for managing a library: books, authors, members and loans. Paginated and sortable collections, criteria-based search, per-operation DTOs, validation on every input, and a global exception handler that turns business errors into accurate status codes with a JSON body naming each invalid field. Three configuration profiles, a health endpoint, and a multi-stage Docker build.</p>
+    <p class="fr">Un service REST en couches pour gérer une bibliothèque&nbsp;: livres, auteurs, membres et emprunts. Collections paginées et triables, recherche par critères, DTO par opération, validation de toutes les entrées, et un gestionnaire d’exceptions global qui traduit chaque erreur métier en code HTTP exact, avec un corps JSON nommant les champs fautifs. Trois profils de configuration, un point de surveillance et une image Docker en deux étapes.</p>
     <p class="links">
-      <a href="https://biblio1-api.onrender.com">Live service</a>
-      <span>|</span>
-      <a href="https://github.com/Japha-Fomen/biblio1-api">Source code</a>
-      <span>|</span>
-      <a href="https://github.com/Japha-Fomen/biblio1-api#readme">Documentation</a>
+      <a href="https://biblio1-api.onrender.com" target="_blank" rel="noopener"><span class="en">Live service</span><span class="fr">Service en ligne</span></a>
+      <span class="sep">|</span>
+      <a href="https://github.com/Japha-Fomen/biblio1-api" target="_blank" rel="noopener"><span class="en">Source code</span><span class="fr">Code source</span></a>
+      <span class="sep">|</span>
+      <a href="https://github.com/Japha-Fomen/biblio1-api#readme" target="_blank" rel="noopener">Documentation</a>
     </p>
-    <p class="note">Free hosting: the first call wakes the instance and takes about a minute. The database is in memory and starts empty after each restart.</p>
+    <p class="note en">Free hosting: the first call wakes the instance and takes about a minute. The database is in memory and starts empty after each restart.</p>
+    <p class="note fr">Hébergement gratuit&nbsp;: le premier appel réveille l’instance et prend environ une minute. La base est en mémoire et repart vide après chaque redémarrage.</p>
   </div>
 
   <div class="card">
-    <h3>Academic management application</h3>
+    <h3><span class="en">Academic management application</span><span class="fr">Application de gestion académique</span></h3>
     <p class="stack">Java · JavaFX · JDBC · MySQL</p>
-    <p>A desktop application built alone on MySQL: twenty-seven classes across five packages, with a data access layer, a service layer, and an interface that changes according to the role of the user. Prepared statements and credentials kept out of the code.</p>
-    <p class="links"><a href="https://github.com/Japha-Fomen">Source code</a></p>
+    <p class="en">A desktop application built alone on MySQL: twenty-seven classes across five packages, with a data access layer, a service layer, and an interface that changes according to the role of the user. Prepared statements and credentials kept out of the code.</p>
+    <p class="fr">Une application de bureau construite seul sur MySQL&nbsp;: vingt-sept classes réparties en cinq paquetages, avec une couche d’accès aux données, une couche de service et une interface qui change selon le rôle de l’utilisateur. Requêtes préparées et identifiants de connexion gardés hors du code.</p>
+    <p class="links"><a href="https://github.com/Japha-Fomen/mini_Dao_projects" target="_blank" rel="noopener"><span class="en">Source code</span><span class="fr">Code source</span></a></p>
   </div>
 
   <div class="card">
     <h3>Station-Api</h3>
-    <p class="stack">Java · Algorithms · Data structures</p>
-    <p>A weighted graph with Dijkstra shortest-path search over a priority queue, from the graph model to the interface that draws the computed route. About a thousand lines, written alone.</p>
-    <p class="links"><a href="https://github.com/Japha-Fomen">Source code</a></p>
+    <p class="stack"><span class="en">Java · Algorithms · Data structures</span><span class="fr">Java · Algorithmes · Structures de données</span></p>
+    <p class="en">A weighted graph with Dijkstra shortest-path search over a priority queue, from the graph model to the interface that draws the computed route. About a thousand lines, written alone.</p>
+    <p class="fr">Un graphe pondéré avec recherche du plus court chemin par l’algorithme de Dijkstra sur une file de priorité, du modèle de graphe jusqu’à l’interface qui trace le trajet calculé. Environ mille lignes, écrites seul.</p>
+    <p class="links"><a href="https://github.com/Japha-Fomen/Station-Api" target="_blank" rel="noopener"><span class="en">Source code</span><span class="fr">Code source</span></a></p>
   </div>
 
   <div class="card">
-    <h3>Network and Active Directory labs</h3>
+    <h3><span class="en">Network and Active Directory labs</span><span class="fr">Laboratoires réseau et Active Directory</span></h3>
     <p class="stack">Cisco IOS · Windows Server · Hyper-V</p>
-    <p>Five Cisco labs built and documented on my own: static and dynamic routing, VLAN segmentation, HSRP redundancy, a firewall with NAT and access control lists. Alongside them, a Windows Server domain controller with organizational units, accounts, group policies, DNS and DHCP, verified from client workstations.</p>
-    <p class="links"><a href="https://github.com/Japha-Fomen">Topologies and configurations</a></p>
+    <p class="en">Five Cisco labs built and documented on my own: static and dynamic routing, VLAN segmentation, HSRP redundancy, a firewall with NAT and access control lists. Alongside them, a Windows Server domain controller with organizational units, accounts, group policies, DNS and DHCP, verified from client workstations.</p>
+    <p class="fr">Cinq laboratoires Cisco montés et documentés seul&nbsp;: routage statique et dynamique, segmentation par VLAN, redondance HSRP, pare-feu avec NAT et listes de contrôle d’accès. À côté, un contrôleur de domaine Windows Server avec unités d’organisation, comptes, stratégies de groupe, DNS et DHCP, vérifié depuis des postes clients.</p>
+    <p class="links"><a href="https://github.com/Japha-Fomen/cisco-static-and-dynamic-route-practice" target="_blank" rel="noopener"><span class="en">Topologies and configurations</span><span class="fr">Topologies et configurations</span></a></p>
   </div>
 
-  <h2>Skills</h2>
+  <h2><span class="en">Skills</span><span class="fr">Compétences</span></h2>
   <div class="skills">
-    <div><b>Languages</b> Java 21, C, C++, SQL, Bash, JavaScript, VB.NET, Python (basic)</div>
-    <div><b>Backend</b> Spring Boot, Spring Web MVC, Spring Data JPA, Hibernate, Bean Validation, MapStruct, Maven, REST API design</div>
-    <div><b>Databases</b> MySQL, T-SQL, SQLite, H2, relational modelling, derived and custom queries</div>
-    <div><b>Testing</b> JUnit 5, automated API testing with Postman, test scenario design</div>
-    <div><b>Delivery</b> Git, GitHub, GitHub Actions, Docker, Linux, configuration profiles per environment</div>
-    <div><b>Embedded</b> FreeRTOS, CMSIS-RTOS2, ARM Cortex-M, concurrent task design, I2C</div>
-    <div><b>Networking</b> TCP/IP, VLAN, routing, Cisco IOS, Wireshark, Windows Server and Active Directory</div>
+    <div><b><span class="en">Languages</span><span class="fr">Langages</span></b> Java 21, C, C++, SQL, Bash, JavaScript, VB.NET, Python <span class="en">(basic)</span><span class="fr">(notions)</span></div>
+    <div><b><span class="en">Backend</span><span class="fr">Dorsal</span></b> Spring Boot, Spring Web MVC, Spring Data JPA, Hibernate, Bean Validation, MapStruct, Maven, <span class="en">REST API design</span><span class="fr">conception d’API REST</span></div>
+    <div><b><span class="en">Databases</span><span class="fr">Bases de données</span></b> MySQL, T-SQL, SQLite, H2, <span class="en">relational modelling, derived and custom queries</span><span class="fr">modélisation relationnelle, requêtes dérivées et personnalisées</span></div>
+    <div><b><span class="en">Testing</span><span class="fr">Tests</span></b> JUnit 5, <span class="en">automated API testing with Postman, test scenario design</span><span class="fr">tests d’API automatisés avec Postman, conception de scénarios</span></div>
+    <div><b><span class="en">Delivery</span><span class="fr">Livraison</span></b> Git, GitHub, GitHub Actions, Docker, Linux, <span class="en">configuration profiles per environment</span><span class="fr">profils de configuration par environnement</span></div>
+    <div><b><span class="en">Embedded</span><span class="fr">Embarqué</span></b> FreeRTOS, CMSIS-RTOS2, ARM Cortex-M, <span class="en">concurrent task design</span><span class="fr">conception de tâches concurrentes</span>, I2C</div>
+    <div><b><span class="en">Networking</span><span class="fr">Réseaux</span></b> TCP/IP, VLAN, <span class="en">routing</span><span class="fr">routage</span>, Cisco IOS, Wireshark, Windows Server, Active Directory</div>
   </div>
 
-  <h2>Education</h2>
-  <p><b>Bachelor of Applied Science, Computer Science.</b> Université du Québec en Outaouais, January 2022 to January 2025.<br>
-  <b>Bachelor's degree in Physics, Mechanics.</b> Université de Yaoundé I, Cameroon, 2018 to 2021.</p>
+  <h2><span class="en">Education</span><span class="fr">Formation</span></h2>
+  <p class="en"><b>Bachelor of Applied Science, Computer Science.</b> Université du Québec en Outaouais, January 2022 to January 2025.<br>
+  <b>Bachelor’s degree in Physics, Mechanics.</b> Université de Yaoundé I, Cameroon, 2018 to 2021.</p>
+  <p class="fr"><b>Baccalauréat ès sciences appliquées, informatique.</b> Université du Québec en Outaouais, de janvier 2022 à janvier 2025.<br>
+  <b>Licence en physique, option mécanique.</b> Université de Yaoundé I, Cameroun, de 2018 à 2021.</p>
 
   <footer>
-    Written and maintained by Rhodian Japha Fomen. Bilingual, French and English.
+    <span class="en">Written and maintained by Rhodian Japha Fomen. Bilingual, French and English.</span>
+    <span class="fr">Rédigé et maintenu par Rhodian Japha Ndamen Fomen. Bilingue, français et anglais.</span>
   </footer>
 
 </main>
+
+<script>
+  (function () {
+    var body = document.body;
+    var toggle = document.getElementById('lang-toggle');
+
+    function apply(lang) {
+      body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      toggle.setAttribute('aria-label', lang === 'en' ? 'Afficher la page en français' : 'Show this page in English');
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+
+    // Langue initiale : choix mémorisé, sinon la langue du navigateur, sinon l'anglais.
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    if (saved !== 'en' && saved !== 'fr') {
+      saved = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+    }
+    apply(saved);
+
+    toggle.addEventListener('click', function () {
+      apply(body.getAttribute('data-lang') === 'en' ? 'fr' : 'en');
+    });
+  })();
+</script>
+
 </body>
 </html>
